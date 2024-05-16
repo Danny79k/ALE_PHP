@@ -37,7 +37,7 @@ create table publicaciones(
     id_publicaciones int not null primary key AUTO_INCREMENT,
     fecha DATETIME default CURRENT_TIMESTAMP,
     contenido varchar(200),
-    imagen varchar(200),
+    imagen blob,
     id_usuario int unsigned not null,
     foreign key (id_usuario) references usuario (id)
 );
@@ -85,10 +85,11 @@ INSERT INTO publicaciones (contenido, imagen, id_usuario) VALUES
 ('Segunda publicación', 'https://png.pngtree.com/background/20230524/original/pngtree-sad-pictures-for-desktop-hd-backgrounds-picture-image_2705986.jpg', 9),
 ('Tercera publicación', 'https://png.pngtree.com/background/20230524/original/pngtree-sad-pictures-for-desktop-hd-backgrounds-picture-image_2705986.jpg', 9),
 ('Cuarta publicación', 'https://png.pngtree.com/background/20230524/original/pngtree-sad-pictures-for-desktop-hd-backgrounds-picture-image_2705986.jpg', 8),
-('hola que tal', 'https://ethic.es/wp-content/uploads/2023/03/imagen.jpg', 9);
+('hola que tal', 'ilcaneleggendariojpeg.jpg', 9);
 
 select * from publicaciones;
 
 delete from publicaciones;
 
-select id from usuario where id=8;
+
+

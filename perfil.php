@@ -15,6 +15,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 
@@ -58,7 +59,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         <div class="offcanvas-body w-100">
             <div class="d-flex justify-content-center">
-                <form action="checklogin.php" method="post" class="shadow-lg d-inline-block p-5">
+                <form action="insert_post.php?id=<?php echo $_GET['id'] ?>" method="post" class="shadow-lg d-inline-block p-5">
                     <div class="d-flex justify-content-center"><svg xmlns="http://www.w3.org/2000/svg" width="66"
                             height="66" fill="currentColor" class=" bi bi-alipay" viewBox="0 0 16 16">
                             <path
@@ -74,8 +75,9 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                     </p>
                     <p class="bg-secondary-subtle rounded-3 p-1 mt-5 mb-5">
                         <label for="file">foto:</label>
-                        <input type="file" name="imagen" class="rounded-3 border-0">
+                        <input type="file" id="imageUpload" class="rounded-3 border-0" accept="image/*">
                     </p>
+                    <textarea class="bg-secondary-subtle rounded-3 p-1 mt-5 mb-5 d-flex flex-wrap" name="imagen"  id="imagePreview"></textarea>
                     <p class="d-flex justify-content-center my-4">
                         <input type="submit" class="btn btn-primary col-12 px-5">
                     </p>
@@ -85,7 +87,6 @@ $conn = new mysqli("localhost", "root", "7997", "social");
     </div>
 
     <!-- OFFCANVAS END -->
-
     <div class="container py-4">
         <?php
         $consulta_display = "select * from publicaciones where id_usuario=" . $_GET['id'];
@@ -126,7 +127,24 @@ $conn = new mysqli("localhost", "root", "7997", "social");
         }
         ?>
     </div>
+    <footer class="d-flex flex-column justify-content-center p-5 flex-wraps flex-md-row text-center">
+        <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title"
+                rel="cc:attributionURL" href="https://github.com/Danny79k/Proyecto-III-trimestre">Syphon</a> by <a
+                rel="cc:attributionURL dct:creator" property="cc:attributionName"
+                href="https://github.com/Danny79k">Danny Belloli</a> is licensed under <a
+                href="https://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank"
+                rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img
+                    style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+                    src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1" alt=""><img
+                    style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+                    src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1" alt=""><img
+                    style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+                    src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1" alt=""><img
+                    style="height:22px!important;margin-left:3px;vertical-align:text-bottom;"
+                    src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
+    </footer>
     <!-- script -->
+    <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
         crossorigin="anonymous"></script>
