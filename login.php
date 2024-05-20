@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="shortcut icon" href="alipay.ico" type="image/x-icon">
     <title>Document</title>
 </head>
 
@@ -21,6 +22,9 @@
             <?php
             if (isset($_GET["login_mal"])) {
                 echo "<div class='alert alert-danger text-center mx-3'><strong>Login Denegado!</strong>, usuario o contraseña no encontrado</div>";
+            }
+            if (isset($_GET["nologin"])) {
+                echo "<div class='alert alert-warning text-center mx-3'><strong>Sin usuario!</strong>, porfavor inserte un usuario</div>";
             }
             ?>
             <form action="checklogin.php" method="post" class="shadow-lg d-inline-block p-5">

@@ -1,0 +1,12 @@
+.rotate_css{
+
+  rotate:0;
+  transition: 
+  rotate 0.5s;
+  ;
+}
+
+.rotate_css:hover{
+
+  rotate: -90deg;
+}

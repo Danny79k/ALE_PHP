@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <title>Document</title>
+</head>
+<body>
+<?php
+    $conn = new mysqli('localhost', 'root', '7997', 'social');
+    if ($conn->connect_error)
+        die("Connection failed: " . $conn->connect_error);
+    if (isset($_GET["confirmacion"]) && $_GET["confirmacion"] == "si") {
+        $id = $_GET["id"];
+        $consultaBorrado = "delete from publicaciones where id_publicaciones=".$_GET['borrado'];
+        $conn -> query($consultaBorrado);
+        header("location:perfil.php");
+        exit();
+    }
+    ?>
+
+    <h1 class="display-5 text-center">Estas seguro que quieres borrar</h1>
+    <div class="d-flex justify-content-center p-3">
+        <div class="shadow-lg col-4 p-5">
+            <p class="text-center fs-4">quieres borrar?</p>
+            <div class=" d-flex justify-content-around">
+                <a href="delete_post.php?confirmacion=si&borrado=<?php echo $_GET['borrado']?>" class="btn btn-danger col-5 p-3">Si</a>
+                <a href="perfil.php" class="btn col-5 p-3 border">No</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- script -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+        integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.min.js"
+        integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
+        crossorigin="anonymous"></script>
+</body>
+</html>
