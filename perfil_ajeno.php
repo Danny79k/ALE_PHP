@@ -148,8 +148,8 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                                 <path fill-rule="evenodd"
                                     d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
                             </svg> | logout</a>
-                        <p class="border">
-                            <form action="perfil_ajeno.php" method="post" class="col-2"><input type="text" placeholder="🔎" name="busqueda"
+                        <div class="border-top pt-2 mt-3">
+                            <form action="perfil_ajeno.php" method="post" class="col-12"><input class="col-12" type="text" placeholder="busqueda" name="busqueda"
                                     required></form>
                             <?php
                             if (isset($_POST["busqueda"])) {
@@ -166,7 +166,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                                 <?php
                             }
                             ?>
-                        </p>
+                        </div>
                     </div>
                 </div>
             </ul>

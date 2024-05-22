@@ -50,6 +50,14 @@
                     <label for="password">password:</label>
                     <input type="password" name="password" class="rounded-3 border-0" id="pass2" required>
                 </p>
+                <p class="bg-secondary-subtle rounded-3 p-1 mt-5 mb-5">
+                    <label for="fotoperf">selecciona una imagen perfil:</label>
+                    <input type="file" name="img_perf" class="rounded-3 border-0">
+                </p>
+                <p class="bg-secondary-subtle rounded-3 p-1 mt-5 mb-5">
+                    <label for="bio">Bio:</label>
+                    <textarea type="text" name="bio" col="10" class="rounded-3 border-0">Cuentanos sobre ti...</textarea>
+                </p>
                 <p class="d-flex justify-content-center my-4">
                     <input type="submit" class="btn btn-primary col-12 px-5">
                 </p>

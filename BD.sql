@@ -36,7 +36,7 @@ drop table publicaciones;
 create table publicaciones(
     id_publicaciones int not null primary key AUTO_INCREMENT,
     fecha DATETIME default CURRENT_TIMESTAMP,
-    contenido varchar(200),
+    contenido varchar(1000),
     imagen blob,
     id_usuario int unsigned not null,
     foreign key (id_usuario) references usuario (id)
@@ -130,3 +130,8 @@ UPDATE perfil SET descripcion = 'Leyendo siempre 📖' WHERE id_usuario = 25;
 UPDATE perfil SET descripcion = 'Amante de los animales 🐶' WHERE id_usuario = 26;
 UPDATE perfil SET descripcion = 'El cine es mi pasión 🎬' WHERE id_usuario = 27;
 UPDATE perfil SET descripcion = 'Viviendo al máximo 🚀' WHERE id_usuario = 28;
+
+
+describe perfil;
+
+select * from perfil;

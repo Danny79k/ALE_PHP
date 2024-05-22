@@ -241,7 +241,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                         </div>
                     </div>
                     <div>
-                        <input type="submit" class="btn btn-success col-1">
+                        <input type="submit" class="btn btn-success col-1" value="confirmar">
                     </div>
                 </div>
             </form>

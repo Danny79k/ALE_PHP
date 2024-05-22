@@ -145,6 +145,25 @@ if (!isset($_SESSION["usuario"])) {
                                 <path fill-rule="evenodd"
                                     d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
                             </svg> | logout</a>
+                        <div class="border-top pt-2 mt-3">
+                            <form action="main.php" method="post" class="col-12"><input class="col-12"
+                                    type="text" placeholder="busqueda" name="busqueda" required></form>
+                            <?php
+                            if (isset($_POST["busqueda"])) {
+                                $busqueda = $_POST["busqueda"];
+                                $select_nombre = $conn->query("select * from usuario where usuario like '%$busqueda%'");
+                                ?>
+                                <div class="shadow-lg pt-3 d-flex flex-column">
+                                    <?php
+                                    while ($cuenta = $select_nombre->fetch_assoc()) {
+                                        echo "<a href='perfil_ajeno.php?id=" . $cuenta["id"] . "' class='p-1'>" . $cuenta["usuario"] . "</a>";
+                                    }
+                                    ?>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </ul>
@@ -157,7 +176,7 @@ if (!isset($_SESSION["usuario"])) {
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         <div class="offcanvas-body w-100">
             <div class="d-flex justify-content-center">
-                <form action="insert_post.php" method="post" class="shadow-lg d-inline-block p-5">
+                <form action="insert_post.php" method="post" class="d-inline-block p-5">
                     <div class="d-flex justify-content-center"><svg xmlns="http://www.w3.org/2000/svg" width="66"
                             height="66" fill="currentColor" class=" bi bi-alipay" viewBox="0 0 16 16">
                             <path
@@ -197,13 +216,12 @@ if (!isset($_SESSION["usuario"])) {
 
     <div class="container py-4">
         <?php
-        $consulta_display = "select * from publicaciones order by fecha desc";
-        $ejecutar_consulta = $conn->query($consulta_display);
-        $encontrar_nombre = $conn->query("select * from usuario inner join publicaciones on usuario.id = publicaciones.id_usuario");
-        while ($resultado = $ejecutar_consulta->fetch_assoc()) {
+        $encontrar_post = $conn->query("select * from usuario inner join publicaciones on usuario.id = publicaciones.id_usuario order by fecha desc");
+        while ($resultado = $encontrar_post->fetch_assoc()) {
             $fecha = $resultado["fecha"];
             $imagen = $resultado["imagen"];
             $publicacion = $resultado["contenido"];
+            $usuario = $resultado["usuario"];
             ?>
             <section class="mt-5 d-flex justify-content-center">
                 <div class="d-flex flex-column col-8">
@@ -224,7 +242,7 @@ if (!isset($_SESSION["usuario"])) {
                             </p>
                             <p>
                                 <?php
-                                echo $autor = $encontrar_nombre->fetch_assoc()["usuario"];
+                                echo $usuario;
                                 ?>
                             </p>
                         </div>

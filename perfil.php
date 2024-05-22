@@ -149,6 +149,25 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                                 <path fill-rule="evenodd"
                                     d="M15.854 8.354a.5.5 0 0 0 0-.708l-3-3a.5.5 0 0 0-.708.708L14.293 7.5H5.5a.5.5 0 0 0 0 1h8.793l-2.147 2.146a.5.5 0 0 0 .708.708z" />
                             </svg> | logout</a>
+                        <div class="border-top pt-2 mt-3">
+                            <form action="perfil.php" method="post" class="col-12"><input class="col-12" type="text"
+                                    placeholder="busqueda" name="busqueda" required></form>
+                            <?php
+                            if (isset($_POST["busqueda"])) {
+                                $busqueda = $_POST["busqueda"];
+                                $select_nombre = $conn->query("select * from usuario where usuario like '%$busqueda%'");
+                                ?>
+                                <div class="shadow-lg pt-3 d-flex flex-column">
+                                    <?php
+                                    while ($cuenta = $select_nombre->fetch_assoc()) {
+                                        echo "<a href='perfil_ajeno.php?id=" . $cuenta["id"] . "' class='p-1'>" . $cuenta["usuario"] . "</a>";
+                                    }
+                                    ?>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
                     </div>
                 </div>
             </ul>
@@ -163,7 +182,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
         <div class="offcanvas-body w-100">
             <div class="d-flex justify-content-center">
-                <form action="insert_post.php" method="post" class="d-inline-block p-5">
+                <form action="insert_post.php" method="post" class="d-inline-block p-5" enctype="multipart/form-data">
                     <div class="d-flex justify-content-center"><svg xmlns="http://www.w3.org/2000/svg" width="66"
                             height="66" fill="currentColor" class=" bi bi-alipay" viewBox="0 0 16 16">
                             <path
@@ -177,19 +196,19 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                         <textarea class="uk-textarea" name="contenido" rows="5" placeholder="Textarea"
                             aria-label="Textarea"></textarea>
                     </div>
-                    <div class="uk-margin">
+                    <!-- <div class="uk-margin">
                         <textarea class="uk-textarea" name="imagen" rows="5" placeholder="Textarea"
                             aria-label="Textarea"></textarea>
-                    </div>
+                    </div> -->
 
-                    <!-- <div class="js-upload uk-placeholder uk-text-center">
+                    <div class="js-upload uk-placeholder uk-text-center">
                         <span uk-icon="icon: cloud-upload"></span>
                         <span class="uk-text-middle">Attach binaries by dropping them here or</span>
                         <div uk-form-custom>
                             <input type="file" accept="images/*" name="imagen">
                             <span class="uk-link">selecting one</span>
                         </div>
-                    </div> -->
+                    </div>
 
 
                     <p class="d-flex justify-content-center my-4">
@@ -202,9 +221,10 @@ $conn = new mysqli("localhost", "root", "7997", "social");
 
     <!-- OFFCANVAS INSERT END -->
 
-    <!-- #region perfil-->
-    <div class="container py-4">
-        <div class="d-flex justify-content-center bg-secondary-subtle">
+    <main class="container py-4">
+
+        <!-- #region perfil-->
+        <div class="d-flex justify-content-center bg-secondary-subtle mb-4">
             <?php
             $consulta_perfil = "select * from perfil where id_usuario =" . $_SESSION["id"];
             $ex_cons = $conn->query($consulta_perfil);
@@ -215,9 +235,8 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                     ?>
                     <div class="border-bottom m-5 d-flex align-items-center justify-content-between col-6">
                         <div class="col-2">
-                            <img class="rounded-5"
-                                src="<?php echo ($img_perf == "") ? "https://t4.ftcdn.net/jpg/04/99/93/31/360_F_499933117_ZAUBfv3P1HEOsZDrnkbNCt4jc3AodArl.jpg" : $img_perf; ?>"
-                                alt="">
+                            <img class="rounded-circle"
+                                src="<?php echo ($img_perf == "") ? "https://t4.ftcdn.net/jpg/04/99/93/31/360_F_499933117_ZAUBfv3P1HEOsZDrnkbNCt4jc3AodArl.jpg" : $img_perf; ?>">
                         </div>
                         <p class="text-center fs-4">
                             <?= $bio ?>
@@ -312,7 +331,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
             <?php
         }
         ?>
-    </div>
+    </main>
     <footer class="d-flex flex-column justify-content-center p-5 flex-wraps flex-md-row text-center">
         <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title"
                 rel="cc:attributionURL" href="https://github.com/Danny79k/Proyecto-III-trimestre">Syphon</a> by <a
