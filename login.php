@@ -1,3 +1,9 @@
+<?php session_start();
+if (isset($_SESSION["usuario"])){
+    header("Location:main.php");
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,7 +16,7 @@
     <title>Document</title>
 </head>
 
-<body>
+<body class="bg-dark text-light">
 
     <header class="my-5">
         <h1 class="display-3 text-center">
@@ -18,7 +24,7 @@
         </h1>
     </header>
     <div class="d-flex justify-content-center">
-        <div class="d-flex justify-content-center flex-column">
+        <div class="d-flex justify-content-center flex-column bg-white text-dark">
             <?php
             if (isset($_GET["login_mal"])) {
                 echo "<div class='alert alert-danger text-center mx-3'><strong>Login Denegado!</strong>, usuario o contraseña no encontrado</div>";

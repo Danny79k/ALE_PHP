@@ -5,17 +5,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" href="estilo.css">
     <title>Document</title>
 </head>
 
-<body>
+<body class="bg-dark">
 <header class="my-5">
-        <h1 class="display-3 text-center">
+        <h1 class="display-3 text-center text-light">
             sign in
         </h1>
     </header>
-    <div class="d-flex justify-content-center">
-        <div class="d-flex justify-content-center flex-column">
+    <div class="d-flex justify-content-center text-light">
+        <div class="d-flex justify-content-center flex-column bg-white text-dark">
         <?php
             if (isset($_GET["signin_mal"])){
                 echo "<div class='alert alert-danger text-center mx-3'><strong>Mal!</strong>, usuario o contraseña no validos o ya existentes</div>";
@@ -24,7 +25,7 @@
                 echo "<div class='alert alert-primary text-center mx-3'><strong>Atención</strong>, usuario o contraseña ya existentes</div>";
             }
             ?>
-            <form action="insert_usuario.php" method="post" class="shadow-lg d-inline-block p-5" onsubmit="checkPassword(event)">
+            <form action="insert_usuario.php" method="post" class="shadow-lg d-inline-block p-5" onsubmit="checkPassword(event)" enctype="multipart/form-data">
                 <div class="d-flex justify-content-center"><svg xmlns="http://www.w3.org/2000/svg" width="66"
                         height="66" fill="currentColor" class=" bi bi-alipay" viewBox="0 0 16 16">
                         <path
@@ -50,21 +51,13 @@
                     <label for="password">password:</label>
                     <input type="password" name="password" class="rounded-3 border-0" id="pass2" required>
                 </p>
-                <p class="bg-secondary-subtle rounded-3 p-1 mt-5 mb-5">
-                    <label for="fotoperf">selecciona una imagen perfil:</label>
-                    <input type="file" name="img_perf" class="rounded-3 border-0">
-                </p>
-                <p class="bg-secondary-subtle rounded-3 p-1 mt-5 mb-5">
-                    <label for="bio">Bio:</label>
-                    <textarea type="text" name="bio" col="10" class="rounded-3 border-0">Cuentanos sobre ti...</textarea>
-                </p>
                 <p class="d-flex justify-content-center my-4">
                     <input type="submit" class="btn btn-primary col-12 px-5">
                 </p>
             </form>
         </div>
     </div>
-    <footer class="d-flex flex-column justify-content-center p-5 flex-wraps flex-md-row text-center">
+    <footer class="d-flex flex-column text-light justify-content-center p-5 flex-wraps flex-md-row text-center">
         <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title"
                 rel="cc:attributionURL" href="https://github.com/Danny79k/Proyecto-III-trimestre">Syphon</a> by <a
                 rel="cc:attributionURL dct:creator" property="cc:attributionName"

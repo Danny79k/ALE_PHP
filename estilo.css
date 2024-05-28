@@ -10,3 +10,24 @@
 
   rotate: -90deg;
 }
+
+.inv {
+
+  display:none;
+}
+
+.magic:hover{
+
+  transform: scale(1.2) !important;
+}
+
+.largo {
+
+  height: 1080px;
+}
+
+
+section {
+
+  padding-bottom: 35%;
+}

@@ -7,3 +7,8 @@ function checkPassword(event){
         event.preventDefault()
     }
 }
+function activarEditar(){
+
+    let doc = document.getElementById("inv");
+    doc.style.display = "block";
+}

@@ -28,7 +28,7 @@ create table perfil (
     id_usuario int unsigned not null primary key AUTO_INCREMENT,
     nombre varchar(30) not null,
     icono varchar(200),
-    descripcion varchar(200),
+    descripcion varchar(200) DEFAULT "No hay descripcion",
     foreign key (id_usuario) references usuario (id)
 );
 
@@ -42,7 +42,7 @@ create table publicaciones(
     foreign key (id_usuario) references usuario (id)
 );
 
-create table grupos(
+cr  ate table grupos(
     id_grupo int unsigned not null primary key AUTO_INCREMENT,
     nombre varchar(30) not null,
     descripcion varchar(200),
@@ -58,7 +58,6 @@ create table pertenecer_grupo(
     foreign key (id_usuario) references usuario (id),
     foreign key (id_grupo) references grupos (id_grupo)
 );
-
 
 -- comandito bakanos
 insert into usuario (usuario, email, contrasena) values ('Danny', 'belloli.danny@correo.com', sha1('1234'))
@@ -85,8 +84,7 @@ delete from publicaciones;
 
 
 select * from perfil;
-
-use social;
+select * from usuario;
 
 insert into publicaciones (contenido, id_usuario) values ("dsdsdsd", 11);
 
@@ -135,3 +133,13 @@ UPDATE perfil SET descripcion = 'Viviendo al máximo 🚀' WHERE id_usuario = 28
 describe perfil;
 
 select * from perfil;
+
+delete from publicaciones where id_usuario = 11;
+
+select * from perfil;
+
+select * from usuario inner join publicaciones on usuario.id = publicaciones.id_usuario
+
+select * from usuario;
+
+use social;
