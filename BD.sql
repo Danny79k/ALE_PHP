@@ -41,8 +41,7 @@ create table publicaciones(
     id_usuario int unsigned not null,
     foreign key (id_usuario) references usuario (id)
 );
-
-cr  ate table grupos(
+create table grupos(
     id_grupo int unsigned not null primary key AUTO_INCREMENT,
     nombre varchar(30) not null,
     descripcion varchar(200),
