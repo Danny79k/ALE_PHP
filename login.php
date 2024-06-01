@@ -10,7 +10,7 @@ if (isset($_SESSION["usuario"])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="estilo.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
     <link rel="shortcut icon" href="alipay.ico" type="image/x-icon">
     <title>Document</title>
@@ -24,15 +24,17 @@ if (isset($_SESSION["usuario"])) {
         </h1>
     </header>
     <div class="d-flex justify-content-center">
+        <?php
+        if (isset($_GET["login_mal"])) {
+            echo "<div class='alert alert-danger text-center col-3 mx-3'><strong>Login Denegado!</strong>, usuario o contraseña no encontrado</div>";
+        }
+        if (isset($_GET["nologin"])) {
+            echo "<div class='alert alert-warning text-center col-3 mx-3'><strong>Sin usuario!</strong>, porfavor inserte un usuario</div>";
+        }
+        ?>
+    </div>
+    <div class="d-flex justify-content-center">
         <div class="d-flex justify-content-center flex-column bg-white text-dark">
-            <?php
-            if (isset($_GET["login_mal"])) {
-                echo "<div class='alert alert-danger text-center mx-3'><strong>Login Denegado!</strong>, usuario o contraseña no encontrado</div>";
-            }
-            if (isset($_GET["nologin"])) {
-                echo "<div class='alert alert-warning text-center mx-3'><strong>Sin usuario!</strong>, porfavor inserte un usuario</div>";
-            }
-            ?>
             <form action="checklogin.php" method="post" class="shadow-lg d-inline-block p-5">
                 <div class="d-flex justify-content-center"><svg xmlns="http://www.w3.org/2000/svg" width="66"
                         height="66" fill="currentColor" class=" bi bi-alipay" viewBox="0 0 16 16">
@@ -49,13 +51,21 @@ if (isset($_SESSION["usuario"])) {
                 </p>
                 <p class="bg-secondary-subtle rounded-3 p-1 mt-5 mb-5">
                     <label for="password">password:</label>
-                    <input type="password" id="passLogin" name="password" class="rounded-3 border-0">
-                    <a onclick="showPassword()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                    <input type="password" id="passLogin" name="password" class="pswd rounded-3 border-0">
+                    <a onclick="showPassword()"><svg id="eye_open" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                             fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
                             <path
                                 d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
-                        </svg></a>
+                        </svg>
+                        <svg id="eye_close" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                            class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+                            <path
+                                d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z" />
+                            <path
+                                d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z" />
+                        </svg>
+                    </a>
                 </p>
                 <p class="d-flex justify-content-center my-4">
                     <input type="submit" class="btn btn-primary col-12 px-5">
@@ -111,7 +121,7 @@ if (isset($_SESSION["usuario"])) {
                     src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
     </footer>
     <!-- script -->
-
+    <script src="script_login.js"></script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

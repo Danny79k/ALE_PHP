@@ -1,3 +1,7 @@
+body{
+  overflow-y: scroll;
+}
+
 .rotate_css{
 
   rotate:0;
@@ -31,3 +35,23 @@ section {
 
   padding-bottom: 35%;
 }
+
+#timer_alert {
+
+  display:block;
+}
+
+#passLogin {
+
+  background-color: white;
+}
+
+#eye_close{
+  display: none;
+}
+
+#eye_open{
+
+  display: inline-block;
+}
+

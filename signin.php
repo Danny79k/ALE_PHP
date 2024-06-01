@@ -10,22 +10,25 @@
 </head>
 
 <body class="bg-dark">
-<header class="my-5">
+    <header class="my-5">
         <h1 class="display-3 text-center text-light">
             sign in
         </h1>
     </header>
+    <div class="d-flex justify-content-center">
+        <?php
+        if (isset($_GET["signin_mal"])) {
+            echo "<div class='alert alert-danger text-center mx-3'><strong>Mal!</strong>, usuario o contraseña no validos o ya existentes</div>";
+        }
+        if (isset($_GET["login_existente"])) {
+            echo "<div class='alert alert-primary text-center mx-3'><strong>Atención</strong>, usuario o contraseña ya existentes</div>";
+        }
+        ?>
+    </div>
     <div class="d-flex justify-content-center text-light">
         <div class="d-flex justify-content-center flex-column bg-white text-dark">
-        <?php
-            if (isset($_GET["signin_mal"])){
-                echo "<div class='alert alert-danger text-center mx-3'><strong>Mal!</strong>, usuario o contraseña no validos o ya existentes</div>";
-            }
-            if (isset($_GET["login_existente"])){
-                echo "<div class='alert alert-primary text-center mx-3'><strong>Atención</strong>, usuario o contraseña ya existentes</div>";
-            }
-            ?>
-            <form action="insert_usuario.php" method="post" class="shadow-lg d-inline-block p-5" onsubmit="checkPassword(event)" enctype="multipart/form-data">
+            <form action="insert_usuario.php" method="post" class="shadow-lg d-inline-block p-5"
+                onsubmit="checkPassword(event)" enctype="multipart/form-data">
                 <div class="d-flex justify-content-center"><svg xmlns="http://www.w3.org/2000/svg" width="66"
                         height="66" fill="currentColor" class=" bi bi-alipay" viewBox="0 0 16 16">
                         <path
@@ -41,21 +44,28 @@
                 </p>
                 <p class="bg-secondary-subtle rounded-3 p-1 mt-5 mb-5">
                     <label for="usuario">correo:&nbsp;&nbsp;&nbsp;</label>
-                    <input type="email" name="correo" class="rounded-3 border-0" required>
+                    <input type="text" name="correo" id="correo" class="rounded-3 border-0">
                 </p>
                 <p class="bg-secondary-subtle rounded-3 p-1 mt-5 mb-5">
                     <label for="password">password:</label>
-                    <input type="password" id="passLogin" name="password" class="rounded-3 border-0" id="pass1" required>
-                    <a onclick="showPassword()"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                    <input type="password" name="password" class="pswd rounded-3 border-0" id="pass1" required>
+                    <a onclick="showPassword()"><svg id="eye_open" xmlns="http://www.w3.org/2000/svg" width="16"
+                            height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
                             <path
                                 d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
+                        </svg>
+                        <svg id="eye_close" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+                            <path
+                                d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z" />
+                            <path
+                                d="M5.525 7.646a2.5 2.5 0 0 0 2.829 2.829zm4.95.708-2.829-2.83a2.5 2.5 0 0 1 2.829 2.829zm3.171 6-12-12 .708-.708 12 12z" />
                         </svg></a>
                 </p>
                 <p class="bg-secondary-subtle rounded-3 p-1 mt-5 mb-5">
                     <label for="password">password:</label>
-                    <input type="password" id="passLogin" name="password" class="rounded-3 border-0" id="pass2" required>
+                    <input type="password" name="password" class="pswd rounded-3 border-0" id="pass2" required>
                 </p>
                 <p class="d-flex justify-content-center my-4">
                     <input type="submit" class="btn btn-primary col-12 px-5">
@@ -80,6 +90,7 @@
                     src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1" alt=""></a></p>
     </footer>
     <!-- script -->
+    <script src="script_login.js"></script>
     <script src="script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
         integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"

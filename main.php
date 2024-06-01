@@ -21,7 +21,6 @@ $conn = new mysqli("localhost", "root", "7997", "social");
 </head>
 
 <body data-bs-theme="dark" class="pb-5">
-
     <!-- MODAL INSERT-->
 
     <div class="modal" id="insert">
@@ -301,6 +300,19 @@ $conn = new mysqli("localhost", "root", "7997", "social");
             </div>
         </section>
     </main>
+    <div class="d-none bg-black shadow-lg z-10 fixed-top bg-opacity-75 h-50" id="cookie_cover"></div>
+    <div class="d-none bg-black shadow-lg z-10 fixed-bottom h-50" id="cookie">
+        <div class="d-flex justify-content-center ">
+            <div class="d-flex flex-column">
+                <h1 class="style-6 text-light mt-4">Acepta nuestra politica de cookies</h1>
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-outline-warning col mt-5 py-3 mx-3" id="aceptar_cookies">Aceptar</button>
+                    <button class="btn btn-outline-warning col mt-5 py-3 mx-3">Rechazar</button>
+                    <button class="btn btn-outline-warning col mt-5 py-3 mx-3">Leer informacion legal</button>
+                </div>
+            </div>
+        </div>
+    </div>
     <footer class="d-flex flex-column justify-content-center p-5 mt-5 flex-wraps flex-md-row text-center">
         <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title"
                 rel="cc:attributionURL" href="https://github.com/Danny79k/Proyecto-III-trimestre">Syphon</a> by <a

@@ -142,3 +142,14 @@ select * from usuario inner join publicaciones on usuario.id = publicaciones.id_
 select * from usuario;
 
 use social;
+
+
+select * from grupos;
+
+select * from usuario_premium;
+
+select * from usuario;
+
+insert into usuario_premium values (1);
+
+delete from grupos;
