@@ -51,6 +51,27 @@ correo.addEventListener("blur", () => {
     }
 })
 
+let usu = document.querySelector("#usuario")
+
+usu.addEventListener("keyup", () => {
+    usu.style.backgroundColor = "pink"
+    if (usu.value != "" && usu.value != "admin") {
+        usu.style.backgroundColor = "lightgreen"
+    }
+})
+
+usu.addEventListener("blur", () => {
+
+    usu.style.backgroundColor = "white";
+            if (usu.value == "" || usu.value == "admin") {
+                usu.style.backgroundColor = "pink";
+            }
+            if (usu.value != "" && usu.value != "admin") {
+                usu.style.backgroundColor = "lightgreen";
+            }
+})
+
+
 function checkPassword(event) {
 
     let pass1 = document.getElementById("pass1")
@@ -58,17 +79,26 @@ function checkPassword(event) {
     if (pass1.value != pass2.value) {
         alert("la contraseñas no corresponden")
         event.preventDefault()
+        return
     }
     if (pass1.value.length < 4) {
         event.preventDefault();
         alert("la contraseña debe tener al menos 4 caracteres")
+        return
     }
     if (!correo.value.includes('@')) {
         alert("correo no valido")
         event.preventDefault()
+        return
     }
     if (!correo.value.endsWith('.com')) {
         alert("dominio de correo no valido")
         event.preventDefault()
+        return
+    }
+    if (usu.value == "" || usu.value == "admin") {
+        alert("usuario no valido")
+        event.preventDefault()
+        return
     }
 }

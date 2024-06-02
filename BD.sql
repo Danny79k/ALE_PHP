@@ -58,98 +58,29 @@ create table pertenecer_grupo(
     foreign key (id_grupo) references grupos (id_grupo)
 );
 
--- comandito bakanos
-insert into usuario (usuario, email, contrasena) values ('Danny', 'belloli.danny@correo.com', sha1('1234'))
+-- cracion del admin
 
-select * from usuario;
+insert into usuario (id, usuario, email, contrasena) value (0, 'admin', 'admin', sha1('admin'));
+-- Inserciones en la tabla usuario
+INSERT INTO usuario (usuario, email, contrasena) VALUES ('mariagarcia', 'mariagarcia@example.com', 'contrasena2');
+INSERT INTO usuario (usuario, email, contrasena) VALUES ('juanlopez', 'juanlopez@example.com', 'contrasena3');
+INSERT INTO usuario (usuario, email, contrasena) VALUES ('carmenfernandez', 'carmenfernandez@example.com', 'contrasena4');
+INSERT INTO usuario (usuario, email, contrasena) VALUES ('luisrodriguez', 'luisrodriguez@example.com', 'contrasena5');
+INSERT INTO usuario (usuario, email, contrasena) VALUES ('anaperez', 'anaperez@example.com', 'contrasena6');
+INSERT INTO usuario (usuario, email, contrasena) VALUES ('manuelgonzalez', 'manuelgonzalez@example.com', 'contrasena7');
+INSERT INTO usuario (usuario, email, contrasena) VALUES ('martamorales', 'martamorales@example.com', 'contrasena8');
+INSERT INTO usuario (usuario, email, contrasena) VALUES ('albertoramirez', 'albertoramirez@example.com', 'contrasena9');
+INSERT INTO usuario (usuario, email, contrasena) VALUES ('cristinaruiz', 'cristinaruiz@example.com', 'contrasena10');
 
-select * from usuario_normal;
+-- Inserciones en la tabla perfil
+INSERT INTO perfil (id_usuario, nombre, descripcion) VALUES (19, 'Maria Garcia', 'Descripcion de Maria');
+INSERT INTO perfil (id_usuario, nombre, descripcion) VALUES (20, 'Juan Lopez', 'Descripcion de Juan');
+INSERT INTO perfil (id_usuario, nombre, descripcion) VALUES (21, 'Carmen Fernandez', 'Descripcion de Carmen');
+INSERT INTO perfil (id_usuario, nombre, descripcion) VALUES (22, 'Luis Rodriguez', 'Descripcion de Luis');
+INSERT INTO perfil (id_usuario, nombre, descripcion) VALUES (23, 'Ana Perez', 'Descripcion de Ana');
+INSERT INTO perfil (id_usuario, nombre, descripcion) VALUES (24, 'Manuel Gonzalez', 'Descripcion de Manuel');
+INSERT INTO perfil (id_usuario, nombre, descripcion) VALUES (25, 'Marta Morales', 'Descripcion de Marta');
+INSERT INTO perfil (id_usuario, nombre, descripcion) VALUES (26, 'Alberto Ramirez', 'Descripcion de Alberto');
+INSERT INTO perfil (id_usuario, nombre, descripcion) VALUES (27, 'Cristina Ruiz', 'Descripcion de Cristina');
 
--- la maldita consulta multitabla
-
-select * from usuario inner JOIN usuario_normal on usuario.id = usuario_normal.id_usuario_normal;
-
-delete from usuario;
-delete from usuario_normal;
-
-select * from publicaciones;
-
-select * from usuario inner join publicaciones on usuario.id = publicaciones.id_usuario
-
-
-select * from publicaciones;
-
-delete from publicaciones;
-
-
-select * from perfil;
-select * from usuario;
-
-insert into publicaciones (contenido, id_usuario) values ("dsdsdsd", 11);
-
-select * from perfil where id_usuario =11
-
-select * from usuario where usuario like '% %'
-
-INSERT INTO usuario (usuario, email, contrasena) VALUES ('JuanPerez', 'juan.perez@example.com', 'passwordJuan');
-INSERT INTO usuario (usuario, email, contrasena) VALUES ('MariaGonzalez', 'maria.gonzalez@example.com', 'passwordMaria');
-INSERT INTO usuario (usuario, email, contrasena) VALUES ('CarlosLopez', 'carlos.lopez@example.com', 'passwordCarlos');
-INSERT INTO usuario (usuario, email, contrasena) VALUES ('AnaMartinez', 'ana.martinez@example.com', 'passwordAna');
-INSERT INTO usuario (usuario, email, contrasena) VALUES ('LuisGarcia', 'luis.garcia@example.com', 'passwordLuis');
-INSERT INTO usuario (usuario, email, contrasena) VALUES ('LauraRodriguez', 'laura.rodriguez@example.com', 'passwordLaura');
-INSERT INTO usuario (usuario, email, contrasena) VALUES ('JoseHernandez', 'jose.hernandez@example.com', 'passwordJose');
-INSERT INTO usuario (usuario, email, contrasena) VALUES ('ElenaSanchez', 'elena.sanchez@example.com', 'passwordElena');
-INSERT INTO usuario (usuario, email, contrasena) VALUES ('MiguelRamirez', 'miguel.ramirez@example.com', 'passwordMiguel');
-INSERT INTO usuario (usuario, email, contrasena) VALUES ('CarmenTorres', 'carmen.torres@example.com', 'passwordCarmen');
-INSERT INTO usuario (usuario, email, contrasena) VALUES ('JavierDiaz', 'javier.diaz@example.com', 'passwordJavier');
-INSERT INTO usuario (usuario, email, contrasena) VALUES ('LuciaFernandez', 'lucia.fernandez@example.com', 'passwordLucia');
-INSERT INTO usuario (usuario, email, contrasena) VALUES ('ManuelRuiz', 'manuel.ruiz@example.com', 'passwordManuel');
-INSERT INTO usuario (usuario, email, contrasena) VALUES ('SaraJimenez', 'sara.jimenez@example.com', 'passwordSara');
-INSERT INTO usuario (usuario, email, contrasena) VALUES ('DanielMoreno', 'daniel.moreno@example.com', 'passwordDaniel');
-
-update perfil set icono = "https://tantie77.files.wordpress.com/2014/06/someday-i-will-murder-u.jpg" where id_usuario = 11;
-select * from perfil;
-
-UPDATE perfil SET descripcion = 'Disfrutando cada momento 🌟' WHERE id_usuario = 12;
-UPDATE perfil SET descripcion = 'Siempre aprendiendo algo nuevo 📚' WHERE id_usuario = 13;
-UPDATE perfil SET descripcion = 'La música es mi vida 🎵' WHERE id_usuario = 14;
-UPDATE perfil SET descripcion = 'Aventuras en cada esquina 🚴‍♂️' WHERE id_usuario = 15;
-UPDATE perfil SET descripcion = 'Explorando el mundo 🌍' WHERE id_usuario = 16;
-UPDATE perfil SET descripcion = 'Amante de la tecnología 💻' WHERE id_usuario = 17;
-UPDATE perfil SET descripcion = 'Cocinero en mis ratos libres 🍳' WHERE id_usuario = 18;
-UPDATE perfil SET descripcion = 'Siempre en busca de conocimiento 🔍' WHERE id_usuario = 19;
-UPDATE perfil SET descripcion = 'Pasión por los videojuegos 🎮' WHERE id_usuario = 20;
-UPDATE perfil SET descripcion = 'Viajar es vivir ✈️' WHERE id_usuario = 21;
-UPDATE perfil SET descripcion = 'Enamorado del arte 🎨' WHERE id_usuario = 22;
-UPDATE perfil SET descripcion = 'Fotografía es mi hobby 📸' WHERE id_usuario = 23;
-UPDATE perfil SET descripcion = 'Apasionado del deporte ⚽️' WHERE id_usuario = 24;
-UPDATE perfil SET descripcion = 'Leyendo siempre 📖' WHERE id_usuario = 25;
-UPDATE perfil SET descripcion = 'Amante de los animales 🐶' WHERE id_usuario = 26;
-UPDATE perfil SET descripcion = 'El cine es mi pasión 🎬' WHERE id_usuario = 27;
-UPDATE perfil SET descripcion = 'Viviendo al máximo 🚀' WHERE id_usuario = 28;
-
-
-describe perfil;
-
-select * from perfil;
-
-delete from publicaciones where id_usuario = 11;
-
-select * from perfil;
-
-select * from usuario inner join publicaciones on usuario.id = publicaciones.id_usuario
-
-select * from usuario;
-
-use social;
-
-
-select * from grupos;
-
-select * from usuario_premium;
-
-select * from usuario;
-
-insert into usuario_premium values (1);
-
-delete from grupos;
+SELECT * from usuario;

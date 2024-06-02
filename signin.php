@@ -40,7 +40,7 @@
                 </div>
                 <p class="bg-secondary-subtle rounded-3 p-1 mt-5 mb-5">
                     <label for="usuario">Usuario:&nbsp;&nbsp;&nbsp;</label>
-                    <input type="text" name="usuario" class="rounded-3 border-0" required>
+                    <input type="text" name="usuario" id="usuario" class="rounded-3 border-0" required>
                 </p>
                 <p class="bg-secondary-subtle rounded-3 p-1 mt-5 mb-5">
                     <label for="usuario">correo:&nbsp;&nbsp;&nbsp;</label>

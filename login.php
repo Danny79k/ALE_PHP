@@ -23,6 +23,7 @@ if (isset($_SESSION["usuario"])) {
             login
         </h1>
     </header>
+    <!-- manejo de errores de login de sesiones -->
     <div class="d-flex justify-content-center">
         <?php
         if (isset($_GET["login_mal"])) {
@@ -30,6 +31,9 @@ if (isset($_SESSION["usuario"])) {
         }
         if (isset($_GET["nologin"])) {
             echo "<div class='alert alert-warning text-center col-3 mx-3'><strong>Sin usuario!</strong>, porfavor inserte un usuario</div>";
+        }
+        if (isset($_GET["error"]) && $_GET["error"] == 3) {
+            echo "<div class='alert alert-info text-center col-3 mx-3'><strong>ey pillin!</strong>, no lo intentes mas perro</div>";
         }
         ?>
     </div>

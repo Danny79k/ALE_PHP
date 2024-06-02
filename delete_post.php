@@ -1,3 +1,10 @@
+<?php
+session_start();
+if (!isset($_SESSION["usuario"])) {
+    header("location:login.php");
+    exit();
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +23,11 @@
         $id = $_GET["id"];
         $consultaBorrado = "delete from publicaciones where id_publicaciones=".$_GET['borrado'];
         $conn -> query($consultaBorrado);
+        if ($_SESSION["usuario"] != "admin"){
         header("location:perfil.php");
+        } else {
+            header("location:crud_admin.php");
+        }
         exit();
     }
     ?>
@@ -27,7 +38,7 @@
             <p class="text-center fs-4 text-light ">quieres borrar?</p>
             <div class=" d-flex justify-content-around text-light ">
                 <a href="delete_post.php?confirmacion=si&borrado=<?php echo $_GET['borrado']?>" class="shadow-lg text-light btn btn-danger col-5 p-3">Si</a>
-                <a href="perfil.php" class="shadow-lg text-light btn col-5 p-3 border">No</a>
+                <a href="<?php echo ($_SESSION["usuario"] != "admin") ? 'perfil.php' : 'crud_admin.php'?>" class="shadow-lg text-light btn col-5 p-3 border">No</a>
             </div>
         </div>
     </div>
