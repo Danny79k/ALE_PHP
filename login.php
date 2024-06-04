@@ -27,13 +27,13 @@ if (isset($_SESSION["usuario"])) {
     <div class="d-flex justify-content-center">
         <?php
         if (isset($_GET["login_mal"])) {
-            echo "<div class='alert alert-danger text-center col-3 mx-3'><strong>Login Denegado!</strong>, usuario o contraseña no encontrado</div>";
+            echo "<div class='alert alert-danger text-center col-md-3 col-12 mx-3'><strong>Login Denegado!</strong>, usuario o contraseña no encontrado</div>";
         }
         if (isset($_GET["nologin"])) {
-            echo "<div class='alert alert-warning text-center col-3 mx-3'><strong>Sin usuario!</strong>, porfavor inserte un usuario</div>";
+            echo "<div class='alert alert-warning text-center col-md-3 col-12 mx-3'><strong>Sin usuario!</strong>, porfavor inserte un usuario</div>";
         }
         if (isset($_GET["error"]) && $_GET["error"] == 3) {
-            echo "<div class='alert alert-info text-center col-3 mx-3'><strong>ey pillin!</strong>, no lo intentes mas perro</div>";
+            echo "<div class='alert alert-info text-center col-md-3 col-12                                                                       mx-3'><strong>ey pillin!</strong>, no lo intentes mas perro</div>";
         }
         ?>
     </div>

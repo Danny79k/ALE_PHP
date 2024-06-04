@@ -3,7 +3,6 @@ setTimeout(() => {
     doc.style.display = "none";
 }, 5000)
 
-
 //activador de cookies
 document.addEventListener("DOMContentLoaded", () => {
     setTimeout(() => {

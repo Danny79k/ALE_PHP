@@ -6,7 +6,6 @@ $conn = new mysqli("localhost", "root", "7997", "social");
 
 $usuario = $_POST["usuario"];
 $password = $_POST["password"];
-
 $consulta = $conn->query("select * from usuario where usuario='$usuario' and contrasena = sha1('$password') or email='$usuario' and contrasena = sha1('$password')");
 
 $registro = $consulta->fetch_assoc();
