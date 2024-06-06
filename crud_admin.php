@@ -42,6 +42,9 @@ if ($conn->connect_error)
             </div>
             <div class="tab-content">
                 <div class="tab-pane container active" id="home">
+                    <div class="col3">
+                        <a href="print_pdf.php" class="btn btn-primary mt-4">Imprime tabla</a>
+                    </div>
                     <table class="table table-striped table-dark my-5">
                         <h1 class="style-6 text-center py-1">Usuarios</h1>
                         <thead>
@@ -91,12 +94,13 @@ if ($conn->connect_error)
                                         class=" <?= ($resultado["usuario"] == "admin") ? 'd-none' : '' ?> btn btn-primary">ver</a>
                                 </td>
                                 <td><a href="delete_user.php?user_id=<?php echo $resultado["id"] ?>"
-                                        class="btn btn-danger <?= ($resultado["usuario"] == "admin") ? 'd-none' : '' ?>">Borrar</a>
+                                        class="btn btn-danger <?= ($resultado["usuario"] == "admin") ? 'd-none' : '' ?>">Eliminar
+                                        usuario</a>
                                 </td>
                             </tr>
                             <?php
                         } ?>
-                    </table>    
+                    </table>
                 </div>
                 <div class="tab-pane container fade" id="menu1">
                     <table class="table table-striped table-dark mt-5">
@@ -157,7 +161,7 @@ if ($conn->connect_error)
                         <h1 class="style-6 text-center py-1">Grupos</h1>
                         <thead>
                             <th>id grupo</th>
-                            <th><a class="link-underline link-underline-opacity-0 text-success" href="crud_admin.php?consulta_grupo=<?php if (isset($_GET["consulta_grupo"])) {
+                            <th><a class="link-underline link-underline-opacity-0 text-warning" href="crud_admin.php?consulta_grupo=<?php if (isset($_GET["consulta_grupo"])) {
                                 echo ($_GET["consulta_grupo"] == 1) ? 2 : 1;
                             } ?>"><strong>nombre grupo</strong></a></th>
                             <th class="text-center">descricion</th>
@@ -175,16 +179,6 @@ if ($conn->connect_error)
                                     break;
                             }
                         }
-                        if (isset($_GET["consulta_correo"])) {
-                            switch ($_GET["consulta_correo"]) {
-                                case $_GET["consulta_correo"] == 1:
-                                    $consultaSeleccionada = "select * from usuario order by email asc";
-                                    break;
-                                case $_GET["consulta_correo"] == 2:
-                                    $consultaSeleccionada = "select * from usuario order by email desc";
-                                    break;
-                            }
-                        }
                         $consulta = $conn->query($consultaSeleccionada);
                         while ($resultado = $consulta->fetch_assoc()) {
                             $id = $resultado["id_grupo"];
@@ -198,7 +192,7 @@ if ($conn->connect_error)
                                 <td><a href="perfil_view_admin.php?id=<?php echo $resultado["id_grupo"] ?>"
                                         class="btn btn-primary">ver</a>
                                 </td>
-                                <td><a href="z_coche_borrado.php?id=<?php echo $resultado["id_grupo"] ?>"
+                                <td><a href="delete_grupos.php?group_id=<?php echo $resultado["id_grupo"] ?>"
                                         class="btn btn-danger">Borrar</a>
                                 </td>
                             </tr>
