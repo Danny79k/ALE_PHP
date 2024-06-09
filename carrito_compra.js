@@ -83,6 +83,7 @@ function carritoHTML() {
           </td>   
         `;
         listaCarrito.appendChild(row);
+        actualizarNumero();
 
         // 1.1 Guardar el Carrito en el LS llamando a la función
         guardarCarritoLS(); // Hay que crear la función
@@ -100,4 +101,16 @@ function guardarCarritoLS() {
 
 function limpiarHTML() {
     listaCarrito.innerHTML = "";
+}
+
+function imprimirCant() {
+
+let cantProd = prod.Length();
+document.getElementById("cant_tot").innerHTML = "ddsd";
+console.log(cantProd);
+}
+
+function actualizarNumero() {
+    let nuevoNumero = productosEnCarrito.reduce((acc, producto) => acc + producto.cantidad, 0);
+    numero.innerText = nuevoNumero;
 }

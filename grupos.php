@@ -321,7 +321,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
             </nav>
             <?php
             if (isset($_GET["error"]) && $_GET["error"] == 1) {
-                echo "<div id='timer_alert' role='alert' class='alert alert-warning alert-dismissible'><strong>No eres usuario Premium</strong> actualiza tu suscripcion a premium en un click
+                echo "<div id='timer_alert' role='alert' class='alert alert-warning alert-dismissible'><strong>No eres usuario Premium</strong> actualiza tu suscripcion a premium en un <a href='user_premium.php' class='link-underline link-underline-opacity-0 text-warning'><strong>link</strong></a>
                 <button type='button' class='btn btn-close' data-bs-dismiss='alert'></button></div>";
             }
             ?>

@@ -18,40 +18,40 @@ if (!isset($_SESSION["usuario"]) || $_SESSION["usuario"] != "admin") {
 <?php
 $conn = new mysqli('localhost', 'root', '7997', 'social');
 if ($conn->connect_error)
-    die("Connection failed: " . $conn->connect_error);
-?>
+    die("Connection failed: " . $conn->connect_error)
+        ?>
 
-<body class="bg-dark text-light">
-    <section class="mt-5 d-flex justify-content-center">
-        <div class="d-flex flex-column">
-            <div class="d-flex mb-5">
-                <a href="logout.php" class="col btn btn-warning m-2">logout</a>
-            </div>
-            <div class="tab-content">
-                <ul class="nav nav-tabs">
-                    <li class="nav-item">
-                        <a class="nav-link active" data-bs-toggle="tab" href="#home">Usuario</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#menu1">Publicaciones</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" data-bs-toggle="tab" href="#menu2">Grupos</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="tab-content">
-                <div class="tab-pane container active" id="home">
-                    <div class="col3">
-                        <a href="print_pdf.php" class="btn btn-primary mt-4">Imprime tabla</a>
-                    </div>
-                    <table class="table table-striped table-dark my-5">
-                        <h1 class="style-6 text-center py-1">Usuarios</h1>
-                        <thead>
-                            <th>id</th>
-                            <th><a class="link-underline link-underline-opacity-0 text-warning" href="crud_admin.php?consulta_username=<?php if (isset($_GET["consulta_username"])) {
-                                echo ($_GET["consulta_username"] == 1) ? 2 : 1;
-                            } ?>"><strong>username</strong></a></th>
+    <body class="bg-dark text-light">
+        <section class="mt-5 d-flex justify-content-center">
+            <div class="d-flex flex-column">
+                <div class="d-flex mb-5">
+                    <a href="logout.php" class="col btn btn-warning m-2">logout</a>
+                </div>
+                <div class="tab-content">
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" data-bs-toggle="tab" href="#home">Usuario</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#menu1">Publicaciones</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#menu2">Grupos</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="tab-content">
+                    <div class="tab-pane container active" id="home">
+                        <div class="col3">
+                            <a href="print_pdf.php?usu_pdf" class="btn btn-primary mt-4">Imprime tabla</a>
+                        </div>
+                        <table class="table table-striped table-dark my-5">
+                            <h1 class="style-6 text-center py-1">Usuarios</h1>
+                            <thead>
+                                <th>id</th>
+                                <th><a class="link-underline link-underline-opacity-0 text-warning" href="crud_admin.php?consulta_username=<?php if (isset($_GET["consulta_username"])) {
+    echo ($_GET["consulta_username"] == 1) ? 2 : 1;
+} ?>"><strong>username</strong></a></th>
                             <th class="text-center"><a class="link-underline link-underline-opacity-0 text-warning"
                                     href="crud_admin.php?consulta_correo=<?php if (isset($_GET["consulta_correo"])) {
                                         echo ($_GET["consulta_correo"] == 1) ? 2 : 1;
@@ -103,11 +103,14 @@ if ($conn->connect_error)
                     </table>
                 </div>
                 <div class="tab-pane container fade" id="menu1">
+                    <div class="col3">
+                        <a href="print_pdf.php?pub_pdf" class="btn btn-primary mt-4">Imprime tabla</a>
+                    </div>
                     <table class="table table-striped table-dark mt-5">
                         <h1 class="style-6 text-center py-1">Publicaciones</h1>
                         <thead>
                             <th>id</th>
-                            <th id="fecha" class="text-center"><a on
+                            <th id="fecha" class="text-center"><a
                                     class="link-underline link-underline-opacity-0 text-warning" href="crud_admin.php?consulta_pub=<?php if (isset($_GET["consulta_pub"])) {
                                         echo ($_GET["consulta_pub"] == 1) ? 2 : 1;
                                     } ?>"><strong>fecha</strong></a></th>
@@ -157,6 +160,9 @@ if ($conn->connect_error)
                     </table>
                 </div>
                 <div class="tab-pane container fade" id="menu2">
+                    <div class="col3">
+                        <a href="print_pdf.php?gru_pdf" class="btn btn-primary mt-4">Imprime tabla</a>
+                    </div>
                     <table class="table table-striped table-dark my-5">
                         <h1 class="style-6 text-center py-1">Grupos</h1>
                         <thead>
@@ -165,10 +171,11 @@ if ($conn->connect_error)
                                 echo ($_GET["consulta_grupo"] == 1) ? 2 : 1;
                             } ?>"><strong>nombre grupo</strong></a></th>
                             <th class="text-center">descricion</th>
+                            <th class="text-center">owner</th>
                             <th colspan="3" class="text-center">acciones</th>
                         </thead>
                         <?php
-                        $consultaSeleccionada = "select * from grupos";
+                        $consultaSeleccionada = "select * from grupos inner join usuario on grupos.id_usuario_premium = usuario.id";
                         if (isset($_GET["consulta_grupo"])) {
                             switch ($_GET["consulta_grupo"]) {
                                 case $_GET["consulta_grupo"] == 1:
@@ -184,11 +191,13 @@ if ($conn->connect_error)
                             $id = $resultado["id_grupo"];
                             $nombre = $resultado["nombre"];
                             $descripcion = $resultado["descripcion"];
+                            $prop_grupo = $resultado["usuario"];
                             ?>
                             <tr>
                                 <td><?php echo $id ?></td>
                                 <td><?php echo $nombre ?></td>
                                 <td><?php echo ($descripcion == "") ? "N/A" : $descripcion ?></td>
+                                <td><?php echo $prop_grupo?></td>
                                 <td><a href="perfil_view_admin.php?id=<?php echo $resultado["id_grupo"] ?>"
                                         class="btn btn-primary">ver</a>
                                 </td>

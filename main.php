@@ -303,6 +303,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
             </div>
         </section>
     </main>
+    <!-- cookie -->
     <div class="d-none bg-black shadow-lg z-10 fixed-top bg-opacity-75 h-50" id="cookie_cover"></div>
     <div class="d-none bg-black shadow-lg z-10 fixed-bottom h-50" id="cookie">
         <div class="d-flex justify-content-center ">
