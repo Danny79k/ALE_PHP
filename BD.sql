@@ -58,4 +58,9 @@ create table pertenecer_grupo(
 use social;
 select * from usuario;
 
-insert into usuario_premium values (18)
+insert into usuario_premium values (18);
+
+insert into usuario (usuario, email, contrasena) value ('admin', 'admin', sha1('admin'));
+
+update usuario set id = 0 where usuario = 'admin'
+
