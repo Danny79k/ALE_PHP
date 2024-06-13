@@ -232,7 +232,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                                     <?php
                                     if (isset($_POST["busqueda"])) {
                                         $busqueda = $_POST["busqueda"];
-                                        $select_nombre = $conn->query("select * from usuario where usuario like '%$busqueda%'");
+                                        $select_nombre = $conn->query("select * from usuario where usuario like '$busqueda%'");
                                         ?>
                                         <div class="shadow-lg pt-3 d-flex flex-column">
                                             <?php
@@ -319,6 +319,10 @@ $conn = new mysqli("localhost", "root", "7997", "social");
             </div>
         </div>
     </div>
+
+    <img src="https://t1.ea.ltmcdn.com/es/posts/0/1/1/4_rana_negra_sudafricana_breviceps_fuscus_24110_13_600.jpg" alt="" class="rana">
+    <button id="moveRana" class="d-none helo">click</button>
+    <div id="bababoi">&nbsp;</div>
     <footer class="d-flex flex-column justify-content-center p-5 mt-5 flex-wraps flex-md-row text-center">
         <p xmlns:cc="http://creativecommons.org/ns#" xmlns:dct="http://purl.org/dc/terms/"><a property="dct:title"
                 rel="cc:attributionURL" href="https://github.com/Danny79k/Proyecto-III-trimestre">Syphon</a> by <a

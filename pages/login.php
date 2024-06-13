@@ -27,13 +27,16 @@ if (isset($_SESSION["usuario"])) {
     <div class="d-flex justify-content-center">
         <?php
         if (isset($_GET["login_mal"])) {
-            echo "<div class='alert alert-danger text-center col-md-3 col-12 mx-3'><strong>Login Denegado!</strong>, usuario o contraseña no encontrado</div>";
+            echo "<div class='alert alert-danger text-center alert-dismissible col-md-3 col-12 mx-3'><strong>Login Denegado!</strong>, usuario o contraseña no encontrado <button type='button' class='btn btn-close' data-bs-dismiss='alert'></button></div>";
         }
         if (isset($_GET["nologin"])) {
-            echo "<div class='alert alert-warning text-center col-md-3 col-12 mx-3'><strong>Sin usuario!</strong>, porfavor inserte un usuario</div>";
+            echo "<div class='alert alert-warning text-center alert-dismissible col-md-3 col-12 mx-3'><strong>Sin usuario!</strong>, porfavor inserte un usuario <button type='button' class='btn btn-close' data-bs-dismiss='alert'></button></div>";
         }
         if (isset($_GET["error"]) && $_GET["error"] == 3) {
-            echo "<div class='alert alert-info text-center col-md-3 col-12                                                                       mx-3'><strong>ey pillin!</strong>, no lo intentes mas perro</div>";
+            echo "<div class='alert alert-info text-center alert-dismissible col-md-3 col-12 mx-3'><strong>ey pillin!</strong>, no lo intentes mas perro <button type='button' class='btn btn-close' data-bs-dismiss='alert'></button></div>";
+        }
+        if (isset($_GET["msn"]) && $_GET["msn"] == 1) {
+            echo "<div class='alert alert-success text-center alert-dismissible col-md-3 col-12 mx-3'><strong>Enhorabuena!</strong>, borraste tu cuenta con éxito <button type='button' class='btn btn-close' data-bs-dismiss='alert'></button></div>";
         }
         ?>
     </div>
@@ -56,14 +59,14 @@ if (isset($_SESSION["usuario"])) {
                 <p class="bg-secondary-subtle rounded-3 p-1 mt-5 mb-5">
                     <label for="password">password:</label>
                     <input type="password" id="passLogin" name="password" class="pswd rounded-3 border-0">
-                    <a onclick="showPassword()"><svg id="eye_open" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                            fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                    <a onclick="showPassword()"><svg id="eye_open" xmlns="http://www.w3.org/2000/svg" width="16"
+                            height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
                             <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0" />
                             <path
                                 d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7" />
                         </svg>
-                        <svg id="eye_close" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                            class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
+                        <svg id="eye_close" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                            fill="currentColor" class="bi bi-eye-slash-fill" viewBox="0 0 16 16">
                             <path
                                 d="m10.79 12.912-1.614-1.615a3.5 3.5 0 0 1-4.474-4.474l-2.06-2.06C.938 6.278 0 8 0 8s3 5.5 8 5.5a7 7 0 0 0 2.79-.588M5.21 3.088A7 7 0 0 1 8 2.5c5 0 8 5.5 8 5.5s-.939 1.721-2.641 3.238l-2.062-2.062a3.5 3.5 0 0 0-4.474-4.474z" />
                             <path

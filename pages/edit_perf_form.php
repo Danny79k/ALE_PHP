@@ -32,7 +32,8 @@ $conn = new mysqli("localhost", "root", "7997", "social");
             $cons1 = $conn->query($cons);
             ?>
             <div class="d-flex justify-content-center bg-black text-light">
-                <form action="../func/edit_perf.php" method="post" class="d-inline-block p-5" enctype="multipart/form-data">
+                <form action="../func/edit_perf.php" method="post" class="d-inline-block p-5"
+                    enctype="multipart/form-data">
                     <div class="d-flex justify-content-center"><svg xmlns="http://www.w3.org/2000/svg" width="66"
                             height="66" fill="currentColor" class=" bi bi-alipay" viewBox="0 0 16 16">
                             <path
@@ -72,6 +73,9 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                         <input type="submit" class="btn btn-primary col-12 px-5">
                     </p>
                 </form>
+            </div>
+            <div class="text-center text-white">
+                <a href="delete_user.php?user_id=<?php echo $_SESSION["id"]?>">Date de baja de la aplicacion</a>
             </div>
         </div>
     </div>

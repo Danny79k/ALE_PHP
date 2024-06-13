@@ -21,11 +21,13 @@ if (!isset($_SESSION["usuario"])) {
         die("Connection failed: " . $conn->connect_error);
     if (isset($_GET["confirmacion"]) && $_GET["confirmacion"] == "si") {
         $consultaBorrado1 = "delete from pertenecer_grupo where id_grupo=".$_GET['group_id'];
-        $consultaBorrado2 = "delete from grupos where id_grupo=".$_GET['group_id'];
+        $consultaBorrado2 = "delete from pub_grupo where id_grupo=".$_GET['group_id'];
+        $consultaBorrado3 = "delete from grupos where id_grupo=".$_GET['group_id'];
         $conn -> query($consultaBorrado1);
         $conn -> query($consultaBorrado2);
+        $conn -> query($consultaBorrado3);
         if ($_SESSION["usuario"] != "admin"){
-        header("location:perfil.php");
+        header("location:grupos.php");
         } else {
             header("location:crud_admin.php");
         }
@@ -33,13 +35,13 @@ if (!isset($_SESSION["usuario"])) {
     }
     ?>
 
-    <h1 class="display-5 text-center text-light bg-dark m-0">Estas seguro que quieres elimina el usuario! <strong>esta accion es irreversible</strong></h1>
+    <h1 class="display-5 text-center text-light bg-dark m-0">Estas seguro que quieres elimina el grupo! <strong>esta accion es irreversible</strong></h1>
     <div class="d-flex bg-dark justify-content-center p-3 largo">
         <div class="col-4 p-5>
             <p class="text-center fs-4 text-light ">quieres borrar?</p>
             <div class=" d-flex justify-content-around text-light ">
                 <a href="delete_grupos.php?confirmacion=si&group_id=<?php echo $_GET['group_id']?>" class="shadow-lg text-light btn btn-danger col-5 p-3">Si</a>
-                <a href="<?php echo ($_SESSION["usuario"] != "admin") ? 'perfil.php' : 'crud_admin.php'?>" class="shadow-lg text-light btn col-5 p-3 border">No</a>
+                <a href="<?php echo ($_SESSION["usuario"] != "admin") ? 'grupos.php' : 'crud_admin.php'?>" class="shadow-lg text-light btn col-5 p-3 border">No</a>
             </div>
         </div>
     </div>

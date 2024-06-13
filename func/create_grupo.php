@@ -27,8 +27,8 @@ if ($ex_cons->num_rows > 0) {
         $stmt = $conn -> prepare("insert into grupos (nombre, descripcion, imagen, id_usuario_premium) values (?,?,?,?)");
         $stmt -> bind_param("sssi", $nombre_grupo, $info_grupo, $nueva_imagen, $id_premium);
         $stmt -> execute();
-        header("location:../grupos.php");
+        header("location:../pages/grupos.php");
     }
 } else {
-    header("location:../grupos.php?error=1"); //error de permisos
+    header("location:../pages/grupos.php?error=1"); //error de permisos
 }

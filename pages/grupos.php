@@ -116,7 +116,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                             </div>
                             <div class="uk-margin">
                                 <input type="text" name="nombre_grupo" class="uk-input bg-dark"
-                                    placeholder="nombre del grupo">
+                                    placeholder="nombre del grupo" required>
                             </div>
                             <div class="uk-margin">
                                 <textarea name="info_grupo" class="uk-textarea bg-dark" placeholder="info"></textarea>
@@ -240,6 +240,30 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                             <?php
                             }
                             ?>
+                        <div class="mt-5">
+                            <?php
+                            $sacar_mis_grupos = 'select id_grupo,nombre from grupos where id_grupo in(select id_grupo from pertenecer_grupo where id_usuario = ' . $_SESSION['id'] . ')';
+                            $execute_query = $conn->query($sacar_mis_grupos);
+                            while ($registro = $execute_query->fetch_assoc()) {
+                                $nombre_grupo1 = $registro['nombre'];
+                                $id_grp = $registro['id_grupo'];
+                                ?>
+                                <div class="border-bottom text-center d-flex justify-content-between">
+                                    <a href="view_grupo.php?idgrp=<?= $id_grp ?>"
+                                        class="link-underline link-underline-opacity-0 text-white fs-5"><?= $nombre_grupo1 ?></a><a
+                                        href="../func/exit_group.php?idgrp=<?= $id_grp ?>" class="text-danger"><svg
+                                            xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                            class="bi bi-trash" viewBox="0 0 16 16">
+                                            <path
+                                                d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z" />
+                                            <path
+                                                d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z" />
+                                        </svg></a>
+                                </div>
+                                <?php
+                            }
+                            ?>
+                        </div>
                     </ul>
                 </div>
 
@@ -248,7 +272,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                 $select_nombre_res = $conn->query("select * from usuario where id = " . $_SESSION['id']);
                 ?>
                 <div class="btn-group dropend d-lg-none border">
-                    <button type="button" class="btn border-0 ropdown-toggle" data-bs-toggle="dropdown"
+                    <button type="button" class="btn border-0 dropdown-toggle" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
                             class="rotate_css bi bi-list" viewBox="0 0 16 16">
@@ -282,9 +306,9 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                                             d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0M8.5 4.5a.5.5 0 0 0-1 0v3h-3a.5.5 0 0 0 0 1h3v3a.5.5 0 0 0 1 0v-3h3a.5.5 0 0 0 0-1h-3z" />
                                     </svg> | nuevo</button>
                                 <a href="grupos.php" class="btn btn-outline-info my-1" disabled>🔒grupos</a>
-                                <a href="../func/logout.php" class="btn btn-danger my-1"><svg xmlns="http://www.w3.org/2000/svg"
-                                        width="16" height="16" fill="currentColor" class="bi bi-box-arrow-right"
-                                        viewBox="0 0 16 16">
+                                <a href="../func/logout.php" class="btn btn-danger my-1"><svg
+                                        xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                        class="bi bi-box-arrow-right" viewBox="0 0 16 16">
                                         <path fill-rule="evenodd"
                                             d="M10 12.5a.5.5 0 0 1-.5.5h-8a.5.5 0 0 1-.5-.5v-9a.5.5 0 0 1 .5-.5h8a.5.5 0 0 1 .5.5v2a.5.5 0 0 0 1 0v-2A1.5 1.5 0 0 0 9.5 2h-8A1.5 1.5 0 0 0 0 3.5v9A1.5 1.5 0 0 0 1.5 14h8a1.5 1.5 0 0 0 1.5-1.5v-2a.5.5 0 0 0-1 0z" />
                                         <path fill-rule="evenodd"
@@ -308,7 +332,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                                         <?php
                                     }
                                     ?>
-                                </div>
+                                </div>  
                             </div>
                         </div>
                     </ul>
@@ -321,7 +345,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
             </nav>
             <?php
             if (isset($_GET["error"]) && $_GET["error"] == 1) {
-                echo "<div id='timer_alert' role='alert' class='alert alert-warning alert-dismissible'><strong>No eres usuario Premium</strong> actualiza tu suscripcion a premium en un <a href='user_premium.php' class='link-underline link-underline-opacity-0 text-warning'><strong>link</strong></a>
+                echo "<div id='timer_alert' role='alert' class='alert alert-warning alert-dismissible'><strong>No eres usuario Premium</strong> actualiza tu suscripcion a premium en un <a href='../func/user_premium.php' class='link-underline link-underline-opacity-0 text-warning'><strong>link</strong></a>
                 <button type='button' class='btn btn-close' data-bs-dismiss='alert'></button></div>";
             }
             ?>
@@ -330,19 +354,22 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                 $select_group = "select * from grupos";
                 $ex_cons_gr = $conn->query($select_group);
                 while ($registro = $ex_cons_gr->fetch_assoc()) {
+                    $id_grupo = $registro['id_grupo'];
                     $nombre_gr = $registro["nombre"];
                     $bio_gr = $registro["descripcion"];
                     $img_gr = $registro["imagen"];
+                    $id_creador = $registro['id_usuario_premium'];
                     ?>
                     <div class="col-md-4 col-11">
                         <div class="card">
+                            <?php echo ($id_creador == $_SESSION['id'] ? '<a href="delete_grupos.php?group_id=' . $id_grupo . '" class="link-underline link-underline-opacity-0 text-danger">Elimina Grupo</a>' : "") ?>
                             <img class="card-img-top"
                                 src="<?php echo ($img_gr == "") ? "https://www.htgtrading.co.uk/wp-content/uploads/2016/03/no-user-image-square.jpg" : $img_gr ?>"
                                 alt="Card image">
-                            <div class="row p-3">
-                                <h4 class="col card-title"><?= $nombre_gr; ?></h4>
-                                <p class="col"><?= $bio_gr; ?></p>
-                                <a href="join_grupos.php" class="btn btn-primary col">Únete al grupo</a>
+                            <div class="row p-3 text-center d-flex justify-content-between">
+                                <h4 class="col-8 card-title"><?= $nombre_gr; ?></h4>
+                                <a href="../func/join_grupo.php?idgrp=<?= $id_grupo ?>"
+                                    class="btn btn-success link-underline link-underline-opacity-0 col-4">Únete al grupo</a>
                             </div>
                         </div>
                     </div>

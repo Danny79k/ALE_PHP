@@ -1,11 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;500;600;700;800;900&display=swap');
 
 :root {
-    --clr-main: gold;
+    --clr-main: rgb(39, 38, 38);
     --clr-main-light: limegreen;
     --clr-white: #ececec;
-    --clr-gray: #e2e2e2;
-    --clr-black: #000000;
+    --clr-gray: #000000;
+    --clr-black: #FFFFFF;
 }
 
 * {
@@ -88,34 +88,6 @@ aside {
     border-radius: .25rem;
 }
 
-input[type="text"],
-input[type="password"],
-input[type="email"],
-input[type="submit"] {
-    width: 100%;
-    margin-bottom: 10px;
-    padding: 10px;
-    box-sizing: border-box;
-    border: 1px solid var(--clr-gray);
-    border-radius: 4px;
-}
-
-input[type="submit"] {
-    background-color: var(--clr-main);
-    color: var(--clr-black);
-    cursor: pointer;
-}
-
-input[type="submit"]:hover {
-    background-color: var(--clr-main-light);
-}
-
-.error {
-    color: var(--clr-main);
-    margin-top: 5px;
-}
-
-
 .texto-footer {
     color: var(--clr-main-light);
     font-size: .85rem;
@@ -179,7 +151,7 @@ main {
     color: var(--clr-main);
 }
 
-/** CONFIGURACION CARRITO **/
+/* CONFIGURACION CARRITO */
 
 .contenedor-carrito {
     display: flex;

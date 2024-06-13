@@ -55,44 +55,20 @@ section {
   display: inline-block;
 }
 
-/* carrito */
+/* cosita */
 
-ul li {list-style: none;
+.rana {
+  position: absolute;
+  bottom: -1080px;
+  display: none;
+  transform: scale(0.5);
+  transition: transform, 4s; /* Transición de 4 segundos para la propiedad bottom */
+}
+.rana:hover{
+  transform: scale(9.2) !important;
+}
+.rana.mover {
+  bottom: 300; /* Cambiado a 0 para que la rana suba hasta la posición 0 */
+  display: block;
 }
 
-.submenu {
-position: relative;
-}
-
-.submenu #carrito{
-display: none;
-}
-
-.submenu:hover #carrito{
-display: block;
-position: absolute;
-right:0;
-top:100%;
-z-index: 1;
-background-color: white;
-padding: 5px;
-min-height: 400px;
-min-width: 400px;
-}
-
-.borrarProd {
-background-color: red;
-border-radius: 50%;
-padding: 5px 10px;
-text-decoration: none;
-color: white;
-font-weight: bold;
-}
-
-/* .vacio {
-padding: 10px;
-background-color: crimson;
-text-align: center;
-border-radius: 10px;
-color: white;
-} */

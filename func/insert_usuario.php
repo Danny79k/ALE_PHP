@@ -13,7 +13,7 @@ $bio = $_POST["bio"];
 $consulta = $conn->query("select * from usuario where usuario='$usuario' or email = '$correo'");
 
 if ($consulta->num_rows == 1) {
-    header("location:signin.php?login_existente");
+    header("location:../pages/signin.php?login_existente");
     exit();
 }
 

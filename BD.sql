@@ -47,6 +47,16 @@ create table grupos(
     foreign key (id_usuario_premium) references usuario_premium (id_usuario_premium)
 );
 
+create table pub_grupo (
+    id_pub_grupo int unsigned not null AUTO_INCREMENT,
+    id_grupo int unsigned,
+    imagen varchar(500),
+    texto varchar(200),
+    fecha DATETIME default CURRENT_TIMESTAMP,
+    primary key (id_pub_grupo),
+    Foreign Key (id_grupo) REFERENCES grupos(id_grupo)
+);
+
 create table pertenecer_grupo(
     id_usuario int unsigned not null,
     id_grupo int unsigned not null,
@@ -59,8 +69,15 @@ use social;
 select * from usuario;
 
 insert into usuario_premium values (18);
+insert into usuario_premium values (44)
 
 insert into usuario (usuario, email, contrasena) value ('admin', 'admin', sha1('admin'));
 
 update usuario set id = 0 where usuario = 'admin'
 
+delete from pertenecer_grupo;
+select * from pertenecer_grupo;
+
+select nombre from grupos where id_grupo = (select id_grupo from pertenecer_grupo where id_usuario = );
+
+select * from pub_grupo;
