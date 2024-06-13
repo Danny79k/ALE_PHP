@@ -198,7 +198,7 @@ if ($conn->connect_error)
                                 <td><?php echo $nombre ?></td>
                                 <td><?php echo ($descripcion == "") ? "N/A" : $descripcion ?></td>
                                 <td><?php echo $prop_grupo?></td>
-                                <td><a href="perfil_view_admin.php?id=<?php echo $resultado["id_grupo"] ?>"
+                                <td><a href="view_grupo.php?idgrp=<?php echo $resultado["id_grupo"] ?>"
                                         class="btn btn-primary">ver</a>
                                 </td>
                                 <td><a href="delete_grupos.php?group_id=<?php echo $resultado["id_grupo"] ?>"

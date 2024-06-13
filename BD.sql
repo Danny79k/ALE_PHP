@@ -81,3 +81,5 @@ select * from pertenecer_grupo;
 select nombre from grupos where id_grupo = (select id_grupo from pertenecer_grupo where id_usuario = );
 
 select * from pub_grupo;
+
+update grupos set nombre = 'los chamacos' where id_grupo = 25;

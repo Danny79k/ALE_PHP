@@ -1,8 +1,5 @@
 <?php
 session_start();
-if ($_SESSION["usuario"] == "admin") {
-    header("location:crud_admin.php");
-}
 if (!isset($_SESSION["usuario"])) {
     header("location:login.php");
     exit();
@@ -99,8 +96,8 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div class="d-flex justify-content-center">
-                        <form action="../func/insert_post_grupo.php?idgrp=<?=$_GET['idgrp']?>" method="post" class="d-inline-block p-5"
-                            enctype="multipart/form-data">
+                        <form action="../func/insert_post_grupo.php?idgrp=<?= $_GET['idgrp'] ?>" method="post"
+                            class="d-inline-block p-5" enctype="multipart/form-data">
                             <div class="d-flex justify-content-center"><svg xmlns="http://www.w3.org/2000/svg"
                                     width="66" height="66" fill="currentColor" class=" bi bi-alipay"
                                     viewBox="0 0 16 16">
@@ -112,8 +109,8 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                                 <span class="display-5">Syphon</span>
                             </div>
                             <div class="uk-margin">
-                                <textarea class="uk-textarea bg-dark" name="contenido_grupo" rows="5" placeholder="Textarea"
-                                    aria-label="Textarea"></textarea>
+                                <textarea class="uk-textarea bg-dark" name="contenido_grupo" rows="5"
+                                    placeholder="Textarea" aria-label="Textarea"></textarea>
                             </div>
                             <div class="js-upload uk-placeholder uk-text-center">
                                 <svg aria-label="Icono para representar contenido multimedia, como imágenes o vídeos"
@@ -171,7 +168,8 @@ $conn = new mysqli("localhost", "root", "7997", "social");
 
                 <!-- aside -->
                 <div class="d-none d-lg-block">
-                    <ul class="d-flex flex-column align-items-center col-12">
+                    <ul
+                        class="d-flex flex-column align-items-center col-12 <?= ($_SESSION['usuario'] == 'admin') ? "d-none" : "" ?>">
                         <div class="p-3 col-12 d-flex justify-content">
                             <a href="perfil.php"
                                 class="col-12 text-center text-light link-underline link-underline-opacity-0"><?php echo $select_nombre->fetch_assoc()["usuario"] ?></a>
@@ -236,8 +234,8 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                             <?php
                             }
                             ?>
-                            <div class="mt-5">
-                                <h1 class="display-6 text-light">Participantes</h1>
+                        <div class="mt-5">
+                            <h1 class="display-6 text-light">Participantes</h1>
                             <?php
                             $sacar_participantes = 'select usuario from usuario where id in(select id_usuario from pertenecer_grupo where id_grupo = ' . $_GET['idgrp'] . ')';
                             $execute_query = $conn->query($sacar_participantes);
@@ -245,7 +243,9 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                                 $nombre_usu = $registro['usuario'];
                                 ?>
                                 <div class="border-bottom text-center d-flex justify-content-between">
-                                    <p class=" text-center link-underline link-underline-opacity-0 text-white fs-5"><?= $nombre_usu ?></p>
+                                    <p class=" text-center link-underline link-underline-opacity-0 text-white fs-5">
+                                        <?= $nombre_usu ?>
+                                    </p>
                                 </div>
                                 <?php
                             }
@@ -258,7 +258,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                 <?php
                 $select_nombre_res = $conn->query("select * from usuario where id = " . $_SESSION['id']);
                 ?>
-                <div class="btn-group dropend d-lg-none border">
+                <div class="btn-group dropend d-lg-none border <?= ($_SESSION['usuario'] == 'admin') ? "d-none" : "" ?>">
                     <button type="button" class="btn border-0 ropdown-toggle" data-bs-toggle="dropdown"
                         aria-expanded="false">
                         <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor"
@@ -328,51 +328,59 @@ $conn = new mysqli("localhost", "root", "7997", "social");
         </aside>
         <section class="mt-5 d-flex flex-column col-md-10 col-12">
             <?php
-            $sacar_info_grupos = 'select id_grupo,nombre from grupos where id_grupo = ' . $_GET["idgrp"];
+            $sacar_info_grupos = 'select id_grupo,nombre,descripcion from grupos where id_grupo = ' . $_GET["idgrp"];
             $SQL1 = $conn->query($sacar_info_grupos);
             while ($registro = $SQL1->fetch_assoc()) {
                 $nombre_grupo = $registro['nombre'];
+                $descripcion = $registro['descripcion'];
                 ?>
                 <div class="text-center">
-                    <h1 class="display-3 text-light border-bottom"><?= $nombre_grupo ?></h1>
-                    <a href="#" data-bs-target="#modal_grupo" data-bs-toggle="modal"
-                    class="btn btn-success col-10 link-underline link-underline-opacity-0">
-                    <h2 class="text-light style-6">Subir Publicacion</h2>
-                    </a>
+                    <div class=" border-bottom mb-3">
+                        <h1 class="display-3 text-light"><?= $nombre_grupo ?></h1>
+                        <small><?= $descripcion ?></small>
                     </div>
-                    <?php
-            }
-            ?>
-            <div class="d-flex flex-column align-items-center">
-            <?php
-            $get_group_post = 'select * from pub_grupo where id_grupo = ' . $_GET['idgrp'];
-            $SQL2 = $conn->query($get_group_post);
-            while ($registro = $SQL2->fetch_assoc()) {
-                $id_pub = $registro['id_pub_grupo'];
-                $imagen = $registro['imagen'];
-                $texto = $registro['texto'];
-                $fecha = $registro['fecha'];
-                ?>
-                <div class="card col-6 mt-5 rounded-3 shadow-lg border-0 bg-black">
-                    <div class="card-img rounded-3">
-                        <img src="<?php echo $imagen ?>" class="img-fluid col-12 rounded-3">
-                    </div>
-                    <div class="row pt-3">
-                        <p class="col-lg-3 col-sm-3 col-md-3 col-12 text-center">
-                            <?php
-                            echo $fecha;
-                            ?>
-                        </p>
-                        <p class="col-lg-9 col-sm-9 col-md-9 col-12 text-center">
-                            <?php
-                            echo $texto;
-                            ?>
-                        </p>
-                    </div>
+                    <?php if ($_SESSION["usuario"] != "admin") {
+                        echo "<a href='#' data-bs-target='#modal_grupo' data-bs-toggle='modal'
+                    class='btn btn-success col-10 link-underline link-underline-opacity-0'>
+                    <h2 class='text-light style-6'>Subir Publicacion</h2>
+                    </a>";
+                    } else {
+                        echo "";
+                    } ?>
                 </div>
                 <?php
             }
             ?>
+            <div class="d-flex flex-column align-items-center">
+                <?php
+                $get_group_post = 'select * from pub_grupo where id_grupo = ' . $_GET['idgrp'];
+                $SQL2 = $conn->query($get_group_post);
+                while ($registro = $SQL2->fetch_assoc()) {
+                    $id_pub = $registro['id_pub_grupo'];
+                    $imagen = $registro['imagen'];
+                    $texto = $registro['texto'];
+                    $fecha = $registro['fecha'];
+                    ?>
+                    <div class="card col-6 mt-5 rounded-3 shadow-lg border-0 bg-black">
+                        <div class="card-img rounded-3">
+                            <img src="<?php echo $imagen ?>" class="img-fluid col-12 rounded-3">
+                        </div>
+                        <div class="row pt-3">
+                            <p class="col-lg-3 col-sm-3 col-md-3 col-12 text-center">
+                                <?php
+                                echo $fecha;
+                                ?>
+                            </p>
+                            <p class="col-lg-9 col-sm-9 col-md-9 col-12 text-center">
+                                <?php
+                                echo $texto;
+                                ?>
+                            </p>
+                        </div>
+                    </div>
+                    <?php
+                }
+                ?>
             </div>
         </section>
     </main>
