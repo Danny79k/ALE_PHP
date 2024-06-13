@@ -75,7 +75,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                 </form>
             </div>
             <div class="text-center text-white">
-                <a href="delete_user.php?user_id=<?php echo $_SESSION["id"]?>">Date de baja de la aplicacion</a>
+                <strong><a href="delete_user.php?user_id=<?php echo $_SESSION["id"]?>" class="text-danger">Date de baja de la aplicacion</a></strong>
             </div>
         </div>
     </div>
