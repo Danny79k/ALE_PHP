@@ -313,14 +313,15 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                 <div class="d-flex justify-content-center">
                     <button class="btn btn-outline-warning col mt-5 py-3 mx-3" id="aceptar_cookies">Aceptar</button>
                     <button class="btn btn-outline-warning col mt-5 py-3 mx-3" id="denegar_cookies">Rechazar</button>
-                    <button class="btn btn-outline-warning col mt-5 py-3 mx-3" id="preguntar_cookies">Leer informacion legal</button>
+                    <button class="btn btn-outline-warning col mt-5 py-3 mx-3" id="preguntar_cookies">Leer informacion
+                        legal</button>
                 </div>
-                <p class="text-center">apruebame profe</p>
             </div>
         </div>
     </div>
 
-    <img src="https://t1.ea.ltmcdn.com/es/posts/0/1/1/4_rana_negra_sudafricana_breviceps_fuscus_24110_13_600.jpg" alt="" class="rana">
+    <img src="https://t1.ea.ltmcdn.com/es/posts/0/1/1/4_rana_negra_sudafricana_breviceps_fuscus_24110_13_600.jpg" alt=""
+        class="rana">
     <button id="moveRana" class="d-none helo">click</button>
     <div id="bababoi">&nbsp;</div>
     <footer class="d-flex flex-column justify-content-center p-5 mt-5 flex-wraps flex-md-row text-center">

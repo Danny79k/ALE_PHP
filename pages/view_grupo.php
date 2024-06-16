@@ -147,7 +147,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
 
     <!-- #region publicaciones -->
     <main class="d-flex justify-content-between">
-        <aside class="col-md-2 border-end">
+        <aside class="col-md-2 border-end overflow-y-auto">
             <div class="fixed-top col-2">
                 <header class="d-flex flex-column d-md-block d-none align-items-center flex-lg-row mx-5 mb-5 py-4 px-2">
                     <a href="main.php"
@@ -234,7 +234,7 @@ $conn = new mysqli("localhost", "root", "7997", "social");
                             <?php
                             }
                             ?>
-                        <div class="mt-5">
+                        <div class="mt-5 overf">
                             <h1 class="display-6 text-light">Participantes</h1>
                             <?php
                             $sacar_participantes = 'select usuario from usuario where id in(select id_usuario from pertenecer_grupo where id_grupo = ' . $_GET['idgrp'] . ')';

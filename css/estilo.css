@@ -1,26 +1,26 @@
-body{
+body {
   overflow-y: scroll;
 }
 
-.rotate_css{
+.rotate_css {
 
-  rotate:0;
-  transition: 
-  rotate 0.5s;
+  rotate: 0;
+  transition:
+    rotate 0.5s;
   ;
 }
 
-.rotate_css:hover{
+.rotate_css:hover {
 
   rotate: -90deg;
 }
 
 .inv {
 
-  display:none;
+  display: none;
 }
 
-.magic:hover{
+.magic:hover {
 
   transform: scale(1.2) !important;
 }
@@ -38,7 +38,7 @@ section {
 
 #timer_alert {
 
-  display:block;
+  display: block;
 }
 
 #passLogin {
@@ -46,11 +46,11 @@ section {
   background-color: white;
 }
 
-#eye_close{
+#eye_close {
   display: none;
 }
 
-#eye_open{
+#eye_open {
 
   display: inline-block;
 }
@@ -62,13 +62,23 @@ section {
   bottom: -1080px;
   display: none;
   transform: scale(0.5);
-  transition: transform, 4s; /* Transición de 4 segundos para la propiedad bottom */
+  transition: transform, 4s;
+  /* Transición de 4 segundos para la propiedad bottom */
 }
-.rana:hover{
+
+.rana:hover {
   transform: scale(9.2) !important;
 }
+
 .rana.mover {
-  bottom: 300; /* Cambiado a 0 para que la rana suba hasta la posición 0 */
+  position: absolute;
+  bottom: 100;
   display: block;
 }
 
+@media only screen and (min-width: 600px) {
+  .overf {
+    height: 150px;
+    overflow-y: scroll;
+  }
+}

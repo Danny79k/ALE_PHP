@@ -7,6 +7,7 @@ create table usuario (
     id int unsigned not null primary key auto_increment,
     usuario varchar(30) not null UNIQUE,
     email varchar(60) not null UNIQUE,
+    tipo enum('usuario', 'admin') default 'usuario',
     contrasena varchar(200) not null
 );
 

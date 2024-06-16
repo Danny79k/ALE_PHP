@@ -1,5 +1,6 @@
 <?php
 session_start();
+// ob_start();
 if (!isset($_SESSION["usuario"]) || $_SESSION["usuario"] != "admin") {
     header("location:login.php?error=3");
 
@@ -238,3 +239,23 @@ if ($conn->connect_error)
 </body>
 
 </html>
+
+<?php
+// $html = ob_get_clean();
+
+
+// require_once '../dompdf/autoload.inc.php';
+
+// use Dompdf\Dompdf;
+// $options = $dompdf->getOptions();
+// $options -> set(array('isRemoteEnable' => true));
+// $dompdf -> setOptions($options);
+// $dompdf = new Dompdf();
+// $dompdf->loadHtml($html);
+
+// $dompdf->setPaper('letter');
+
+// $dompdf->render();
+
+// $dompdf->stream('report.pdf', array("Attachment" => false));
+?>
