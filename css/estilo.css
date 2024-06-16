@@ -1,0 +1,84 @@
+body {
+  overflow-y: scroll;
+}
+
+.rotate_css {
+
+  rotate: 0;
+  transition:
+    rotate 0.5s;
+  ;
+}
+
+.rotate_css:hover {
+
+  rotate: -90deg;
+}
+
+.inv {
+
+  display: none;
+}
+
+.magic:hover {
+
+  transform: scale(1.2) !important;
+}
+
+.largo {
+
+  height: 1080px;
+}
+
+
+section {
+
+  padding-bottom: 35%;
+}
+
+#timer_alert {
+
+  display: block;
+}
+
+#passLogin {
+
+  background-color: white;
+}
+
+#eye_close {
+  display: none;
+}
+
+#eye_open {
+
+  display: inline-block;
+}
+
+/* cosita */
+
+.rana {
+  position: absolute;
+  bottom: -1080px;
+  display: none;
+  transform: scale(0.5);
+  transition: transform, 4s;
+  /* Transición de 4 segundos para la propiedad bottom */
+}
+
+.rana:hover {
+  transform: scale(9.2) !important;
+}
+
+.rana.mover {
+  position: absolute;
+  bottom: 100;
+  display: block;
+}
+
+@media only screen and (min-width: 600px) {
+  .overf {
+    height: 150px;
+    overflow-y: scroll;
+  }
+}
